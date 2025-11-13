@@ -1,0 +1,25 @@
+<mvc:View controllerName="app001.controller.View"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt">
+    <Page id="page" title="{i18n>title}">
+    <!-- header -->
+    <tnt:ToolHeader id="shellLikeToolHeader" class="sapUiTinyMargin">
+			<Button icon="sap-icon://menu2" type="Transparent" tooltip="Menu"/>
+            <ToolbarSpacer />
+            <Text text="Hai Satya"/>
+            <ToolbarSpacer />
+            <Button icon="sap-icon://delete" type="Default"></Button>
+       </tnt:ToolHeader>   
+       <footer>
+       <Bar >
+       <contentLeft> 
+       <Text text="Left Footer" />
+       </contentLeft>
+       <contentRight >
+       <Text text="Right Footer"></Text>
+       </contentRight>
+       </Bar>
+       </footer>
+    </Page>
+</mvc:View>
