@@ -1,25 +1,72 @@
-<mvc:View controllerName="app001.controller.View"
+<mvc:View
+    controllerName="app001.controller.View"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:tnt="sap.tnt">
-    <Page id="page" title="{i18n>title}">
-    <!-- header -->
-    <tnt:ToolHeader id="shellLikeToolHeader" class="sapUiTinyMargin">
-			<Button icon="sap-icon://menu2" type="Transparent" tooltip="Menu"/>
+    xmlns:tnt="sap.tnt"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <!-- Header -->
+        <tnt:ToolHeader
+            id="shellLikeToolHeader"
+            class="sapUiTinyMargin"
+        >
+            <SearchField
+                width="50%"
+                search=".onFilterInvoices"
+            />
             <ToolbarSpacer />
-            <Text text="Hai Satya"/>
-            <ToolbarSpacer />
-            <Button icon="sap-icon://delete" type="Default"></Button>
-       </tnt:ToolHeader>   
-       <footer>
-       <Bar >
-       <contentLeft> 
-       <Text text="Left Footer" />
-       </contentLeft>
-       <contentRight >
-       <Text text="Right Footer"></Text>
-       </contentRight>
-       </Bar>
-       </footer>
+            <Button
+                icon="sap-icon://add"
+                text="New Item"
+                type="Emphasized"
+                press="onitem"
+            />
+        </tnt:ToolHeader>
+
+        <!-- Invoice List -->
+        <List
+            headerText="{i18n>invoiceListTitle}"
+            items="{invoice>/Invoices}"
+            class="sapUiResponsiveMargin"
+            id="invoiceList"
+            width="auto"
+            
+        >
+            <items>
+                <ObjectListItem title="{invoice>ProductName}">
+                    <!-- LEFT SIDE ATTRIBUTES -->
+                    <attributes>
+                        <ObjectAttribute
+                            title="Quantity"
+                            text="{invoice>Quantity}"
+                        />
+                        <ObjectAttribute
+                            title="Shipper Name"
+                            text="{invoice>ShipperName}"
+                        />
+                    </attributes>
+
+                    <!-- RIGHT SIDE PRICE -->
+                    <firstStatus>
+                        <ObjectStatus
+                            title="Price"
+                            text="₹ {= ${invoice>ExtendedPrice} }"
+                        />
+                    </firstStatus>
+
+                    <!-- RIGHT SIDE TOTAL (SECOND STATUS) -->
+                    <secondStatus>
+                        <ObjectStatus
+                            title="Total"
+                            text="₹ {= ${invoice>Quantity} * ${invoice>ExtendedPrice} }"
+                            state="Success"
+                        />
+                    </secondStatus>
+                </ObjectListItem>
+            </items>
+        </List>
     </Page>
 </mvc:View>
